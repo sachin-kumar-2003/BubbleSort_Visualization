@@ -1,9 +1,11 @@
 let container = document.getElementById("container");
 let sortButton = document.getElementById("sort");
 let arr = [];
+let timeout;
 
 random();
 function random() {
+  clearTimeout(timeout)
   sortButton.disabled = false;
   container.innerHTML = "";
 
@@ -27,7 +29,7 @@ function play(swaps) {
   const [i, j] = swaps.shift();
   [arr[i], arr[j]] = [arr[j], arr[i]];
   show();
-  setTimeout(() => {
+  timeout=setTimeout(() => {
     play(swaps);
   }, 130);
 }
